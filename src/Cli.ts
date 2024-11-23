@@ -5,6 +5,7 @@ import { FileSystem, Path } from '@effect/platform'
 
 import { fetchSourceCodeTree, renderSourceCodeTreeToXml } from "./fetchSourceCodeTree.js"
 import { formatXml } from "./formatXml.js"
+import { ppSourceCodeTree } from "./ppSourceCodeTree.js"
 
 
 /** CLI command that converts a directory structure to XML
@@ -42,6 +43,9 @@ const command = Command.make(
     yield * Effect.logDebug('outPath', outPath)
 
     const tree = yield * fetchSourceCodeTree(sourcePath)
+
+    yield * Effect.log('tree', ppSourceCodeTree(tree))
+
     const xml  = renderSourceCodeTreeToXml(tree)
 
     yield * fs.writeFile(outPath, Buffer.from(xml))
