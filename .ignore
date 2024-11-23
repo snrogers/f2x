@@ -1,0 +1,4 @@
+*.bun-build
+.vscode
+bun.lockb
+node_modules

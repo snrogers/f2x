@@ -1,0 +1,24 @@
+*.bun-build
+*.tsbuildinfo
+.DS_Store
+.direnv/
+.env
+.env.development.local
+.env.local
+.env.production.local
+.env.test.local
+.envrc
+.ultra.cache.json
+build/
+coverage/
+dist/
+f2x
+node_modules/
+tmp/
+yarn-error.log
+
+
+# Test files, delet them
+files.xml
+test.xml
+test_0.xml

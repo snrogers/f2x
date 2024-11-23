@@ -1,0 +1,22 @@
+{
+  "name": "files-to-xml",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build:bin": "bun build ./src/bin.ts --compile --outfile f2x",
+    "check": "tsc -b tsconfig.json"
+  },
+  "devDependencies": {
+    "@effect/eslint-plugin": "^0.2.0",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "@effect/cli": "latest",
+    "@effect/platform": "latest",
+    "@effect/platform-bun": "^0.49.14",
+    "@effect/schema": "^0.75.5",
+    "@types/node": "^22.8.7",
+    "effect": "latest",
+    "xml-formatter": "^3.6.3"
+  }
+}
