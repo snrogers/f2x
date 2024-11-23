@@ -7,7 +7,6 @@
     "check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
-    "@effect/eslint-plugin": "^0.2.0",
     "typescript": "^5.6.2"
   },
   "dependencies": {
