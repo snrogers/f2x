@@ -6,6 +6,7 @@ export const ALLOWED_EXTENSIONS = [
   '.html',
   '.html.in', // Something weird for zig docs
   '.md',
+  '.mjs',
   '.scss',
   '.ts',
   '.tsx',
