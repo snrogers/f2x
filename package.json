@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build:bin": "bun build ./src/bin.ts --compile --outfile f2x",
-    "check": "tsc -b tsconfig.json"
+    "check": "tsc -b tsconfig.src.json"
   },
   "devDependencies": {
     "typescript": "^5.6.2"
