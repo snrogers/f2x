@@ -9,11 +9,13 @@ export const ALLOWED_EXTENSIONS = [
   '.json',
   '.html',
   '.html.in', // Something weird for zig docs
+  'lua',
   '.md',
   '.mjs',
   '.scss',
   '.ts',
   '.tsx',
+  '.txt',
   '.yml',
   '.yaml',
   '.zig',

@@ -22,6 +22,8 @@ const command = Command.make(
     const path = yield * Path.Path
     const pwd  = yield * Config.string('PWD')
 
+    const thisDirectory = path.basename(pwd)
+
     const sourcePath = pipe(
       sourcePathOption,
       Option.match({
@@ -33,7 +35,7 @@ const command = Command.make(
     const outPath = pipe(
       outFileOption,
       Option.match({
-        onNone: () => path.join(pwd, 'files.xml'),
+        onNone: () => path.join(pwd, `files.${thisDirectory}.xml`),
         onSome: (outPath) => path.resolve(outPath)
       })
     )

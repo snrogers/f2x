@@ -20,5 +20,6 @@ yarn-error.log
 
 # Test files, delet them
 files.xml
+files.*.xml
 test.xml
 test_0.xml
