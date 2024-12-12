@@ -9,15 +9,17 @@ import { ppSourceCodeTree } from "./ppSourceCodeTree.js"
 
 
 /** CLI command that converts a directory structure to XML
- *  @property outFile - Optional output file path
+ *  @property outFile    - Optional output file path
  *  @property sourcePath - Optional source directory path */
 const command = Command.make(
   "files-to-xml",
   {
-    outFile:    Options.optional(Options.file('outFile', { exists: 'either' })),
+    outFile:    Options.optional(Options.text('outFile')),
     sourcePath: Args.optional(Args.directory({ exists: 'yes' })),
   },
   ({ sourcePath: sourcePathOption, outFile: outFileOption }) => Effect.gen(function * () {
+    yield * Effect.log('Starting Files to XML...')
+
     const fs   = yield * FileSystem.FileSystem
     const path = yield * Path.Path
     const pwd  = yield * Config.string('PWD')
