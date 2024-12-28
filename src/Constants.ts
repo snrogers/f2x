@@ -13,6 +13,7 @@ export const ALLOWED_EXTENSIONS = [
   '.html',
   '.html.in', // Template file for generating HTML. Added for Zig docs
   '.ini',
+  '.j2',      // Jinja2 template
   '.js',
   '.jsx',
   '.json',
@@ -31,6 +32,8 @@ export const ALLOWED_EXTENSIONS = [
   '.sql',
   '.svg',
   '.tex',
+  '.tf',      // Terraform
+  '.tfvars',  // Terraform
   '.toml',
   '.ts',
   '.tsx',

@@ -8,6 +8,7 @@
 .env.production.local
 .env.test.local
 .envrc
+.f2x
 .ultra.cache.json
 build/
 coverage/
@@ -18,7 +19,7 @@ tmp/
 yarn-error.log
 
 
-# Test files, delet them
+# Test files, delete them
 files.xml
 files.*.xml
 test.xml
