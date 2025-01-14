@@ -1,10 +1,12 @@
-import { Array, Brand, Effect, flow, pipe } from 'effect'
+import { Array as A, Brand, Effect, flow, pipe } from 'effect'
 import { FileSystem, Path } from '@effect/platform'
 import { PlatformError } from '@effect/platform/Error'
 import { Schema } from '@effect/schema'
 import { ParseError } from '@effect/schema/ParseResult'
 
 import { ALLOWED_EXTENSIONS } from './Constants.js'
+import { getFilterFn, getGitIgnorePatterns } from './GitIgnore.js'
+import {  FilePath } from './types.js'
 
 // ----------------------------------------------------------------- //
 // Types
@@ -77,22 +79,34 @@ export const fetchSourceCodeTree: fetchSourceCodeTree = (sourceDir) =>
       { recursive: true }
     ).pipe(
         Effect.andThen(flow(
-          Array.filter((filePath) =>
+          A.filter((filePath) =>
             !filePath.includes('node_modules')
             && !(filePath.split('/').some(subPath => subPath.startsWith('.')))
           ),
-          Array.filter((filePath) =>
+          A.filter((filePath) =>
             ALLOWED_EXTENSIONS.some(ext => filePath.endsWith(ext))
           )
         )
       )
     )
 
-    const children = yield * Effect.all(pipe(
+    const gitIgnorePatterns = yield * getGitIgnorePatterns(sourceDir as FilePath)
+    const filterFns         = gitIgnorePatterns.map(getFilterFn)
+    const filteredNodePaths = pipe(
       nodePaths,
-      Array.map((fileNode) => Effect.gen(function * () {
+      A.filter((filePath) => filterFns.every(fn => fn(filePath as FilePath)))
+    )
+
+  yield * Effect.log('gitIgnorePatterns', gitIgnorePatterns)
+  yield * Effect.log('nodePaths', filteredNodePaths)
+  yield * Effect.log('filteredNodePaths', filteredNodePaths)
+
+
+    const children = yield * Effect.all(pipe(
+      filteredNodePaths,
+      A.map((fileNode) => Effect.gen(function * () {
         const fileNodePath = path.join (sourceDir, fileNode)
-        const content = yield * fs.readFileString(fileNodePath, 'utf-8')
+        const content      = yield * fs.readFileString(fileNodePath, 'utf-8')
 
         return {
           content,
@@ -115,8 +129,6 @@ export const fetchSourceCodeTree: fetchSourceCodeTree = (sourceDir) =>
     }
 
     return projectSourceTree as SourceCodeTree
-    // const result = yield * Schema.decode (SourceCodeTreeSchema) (projectSourceTree).
-    // return result
   })
 
 // ----------------------------------------------------------------- //

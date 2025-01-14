@@ -18,7 +18,6 @@ node_modules/
 tmp/
 yarn-error.log
 
-
 # Test files, delete them
 files.xml
 files.*.xml
