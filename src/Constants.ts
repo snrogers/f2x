@@ -7,7 +7,6 @@ export const ALLOWED_EXTENSIONS = [
   '.conf',
   '.css',
   '.csv',
-  'Dockerfile', // Not really an extension, but 🤷
   '.gitignore',
   '.htm',
   '.html',
@@ -15,11 +14,11 @@ export const ALLOWED_EXTENSIONS = [
   '.ini',
   '.j2',      // Jinja2 template
   '.js',
-  '.jsx',
   '.json',
+  '.jsx',
   '.lua',
-  '.md',
   '.markdown',
+  '.md',
   '.mjs',
   '.php',
   '.properties',
@@ -37,8 +36,10 @@ export const ALLOWED_EXTENSIONS = [
   '.ts',
   '.tsx',
   '.txt',
-  '.yml',
   '.yaml',
+  '.yml',
   '.zig',
-  '.zon'
+  '.zon',
+  'Dockerfile', // Not really an extension, but 🤷
+  'dockerfile', // Not really an extension, but 🤷
 ]
