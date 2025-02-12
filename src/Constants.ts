@@ -12,6 +12,7 @@ export const ALLOWED_EXTENSIONS = [
   '.html',
   '.html.in', // Template file for generating HTML. Added for Zig docs
   '.ini',
+  '.img',
   '.j2',      // Jinja2 template
   '.js',
   '.json',

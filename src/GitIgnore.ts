@@ -24,7 +24,7 @@ export const getGitIgnorePatterns = (startDir: string): Effect.Effect<
   let currentDir = startDir
 
   while (true) {
-    const gitignorePath = path.join(currentDir, '.gitignore')
+    const gitignorePath = path.join(currentDir, '.f2xignore')
     const exists        = yield * fs.exists(gitignorePath)
 
     if (exists) {

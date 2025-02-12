@@ -29,3 +29,11 @@ To build the package as a (comically large) binary:
 ```sh
 bun run build:bin
 ```
+
+## TODO
+
+- Add a `f2x --init` command to create a `.f2xignore` file in the current directory with sensible defaults
+- Did I hardcode `node_modules`? Should remove that once I have the `f2x --init` command working
+
+
+```
